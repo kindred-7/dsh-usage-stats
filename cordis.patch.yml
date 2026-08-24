@@ -1,8 +1,8 @@
-# dsh-usage-stats bundle patch.
+# @kindred7/dsh-usage-stats bundle patch.
 #
 # Mounts this package as a host Loader entry so the client-modules node half
-# scans its `dsh.client` declaration into the browser boot roster. All behavior
+# scans its dsh.client declaration into the browser boot roster. All behavior
 # lives in the browser half (lib/client.js); the host entry itself is a no-op.
 - insert:
     - id: ui-usage-stats
-      name: dsh-usage-stats
+      name: "@kindred7/dsh-usage-stats"
