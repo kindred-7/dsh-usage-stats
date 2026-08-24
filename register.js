@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // ============================================================================
-// dsh-usage-stats 注册脚本（零依赖）
+// @kindred7/dsh-usage-stats 注册脚本（零依赖）
 //
 // 在 dsh web profile 目录下执行（脚本只改「当前目录」的 package.json）：
 //
+//   dsh plugin --profile web add @kindred7/dsh-usage-stats -w
+//   # 或手动：
 //   cd %USERPROFILE%\.dsh\profiles\web
-//   pnpm add <本包 .tgz 的路径>                        # 安装 + 写 dependencies
-//   pnpm exec dsh-usage-register       # 写入 dsh.profile.bundles
-//   pnpm exec dsh-usage-register --remove   # 反注册 bundles
+//   pnpm add @kindred7/dsh-usage-stats -w
+//   node register.js
 //
 // 参数：
 //   --profile-dir <路径>   显式指定 profile 目录（优先于当前目录）
@@ -22,6 +23,8 @@ import path from "node:path";
 import os from "node:os";
 
 const pluginName = "@kindred7/dsh-usage-stats";
+// 旧的裸包名：从 bundles 迁移出去，避免重复注册
+const legacyName = "dsh-usage-stats";
 
 // --- 解析命令行参数 -----------------------------------------------------------
 const argv = process.argv.slice(2);
@@ -59,6 +62,11 @@ const before = pkg.dsh.profile.bundles ?? [];
 const bundles = new Set(before);
 
 let changed = false;
+// 迁移：旧裸名 → scoped 名（一次性清理，之后只保留 scoped 名）
+if (bundles.delete(legacyName)) {
+  console.log(`[register] 迁移 bundles: ${legacyName} → ${pluginName}`);
+  changed = true;
+}
 if (remove) {
   if (bundles.delete(pluginName)) changed = true;
 } else {
@@ -82,4 +90,3 @@ console.log(
     : `[register] 已将 ${pluginName} 加入 dsh.profile.bundles`
 );
 console.log("[register] 重启 DSH 生效:  dsh web");
-

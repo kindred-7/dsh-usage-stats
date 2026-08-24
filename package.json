@@ -1,7 +1,7 @@
 {
   "name": "@kindred7/dsh-usage-stats",
   "description": "Usage statistics plugin: adds a Usage Statistics section in DSH settings with cumulative/peak token counters, daily streaks, a 1-year activity heatmap, and per-model usage charts",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "module",
   "main": "lib/index.js",
   "bin": {
@@ -40,6 +40,9 @@
   "scripts": {
     "register": "node register.js",
     "unregister": "node register.js --remove"
+  },
+  "dependencies": {
+    "dsh-usage-stats": "npm:@kindred7/dsh-usage-stats@0.2.5"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
