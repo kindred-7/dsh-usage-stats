@@ -20,19 +20,21 @@ DSH web 用量统计插件：在 **设置** 中新增「使用统计」页 —�
 ## 安装
 
 ```powershell
-cd %USERPROFILE%\.dsh\profiles\web
-pnpm add @kindred7/dsh-usage-stats
-pnpm exec dsh-usage-register
+dsh plugin --profile web add @kindred7/dsh-usage-stats
 dsh web    # 重启生效
 ```
 
 从 GitHub 安装指定版本：
 
 ```powershell
-pnpm add github:kindred-7/dsh-usage-stats#v0.2.0
+dsh plugin --profile web add github:kindred-7/dsh-usage-stats#v0.2.0
 ```
 
-卸载：`pnpm exec dsh-usage-register --remove` 后 `pnpm remove @kindred7/dsh-usage-stats`。
+卸载：
+
+```powershell
+dsh plugin --profile web remove @kindred7/dsh-usage-stats
+```
 
 安装后浏览器 **Ctrl+F5 硬刷新**一次，加载新插件脚本。
 

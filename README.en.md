@@ -20,19 +20,21 @@ Usage statistics plugin for DSH web: adds a **Usage Statistics** section to Sett
 ## Install
 
 ```powershell
-cd %USERPROFILE%\.dsh\profiles\web
-pnpm add @kindred7/dsh-usage-stats
-pnpm exec dsh-usage-register
+dsh plugin --profile web add @kindred7/dsh-usage-stats
 dsh web    # restart to take effect
 ```
 
 Install a pinned version from GitHub:
 
 ```powershell
-pnpm add github:kindred-7/dsh-usage-stats#v0.2.0
+dsh plugin --profile web add github:kindred-7/dsh-usage-stats#v0.2.0
 ```
 
-Uninstall: `pnpm exec dsh-usage-register --remove`, then `pnpm remove @kindred7/dsh-usage-stats`.
+Uninstall:
+
+```powershell
+dsh plugin --profile web remove @kindred7/dsh-usage-stats
+```
 
 After installing, hard-refresh the browser once (**Ctrl+F5**) so it picks up the new plugin script.
 

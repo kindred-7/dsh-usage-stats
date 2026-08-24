@@ -1,7 +1,7 @@
 {
   "name": "@kindred7/dsh-usage-stats",
   "description": "Usage statistics plugin: adds a Usage Statistics section in DSH settings with cumulative/peak token counters, daily streaks, a 1-year activity heatmap, and per-model usage charts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "main": "lib/index.js",
   "bin": {

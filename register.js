@@ -21,7 +21,7 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 
-const pluginName = "dsh-usage-stats";
+const pluginName = "@kindred7/dsh-usage-stats";
 
 // --- 解析命令行参数 -----------------------------------------------------------
 const argv = process.argv.slice(2);
